@@ -52,9 +52,51 @@ repasando) pregunta algo. Se va actualizando en cada etapa, no se borra lo anter
 
 ---
 
-## Etapa 2 — Lógica y estructuras de datos · ⏳ Pendiente
+## Etapa 2 — Lógica y estructuras de datos · ✅ Entregada
 
-*(se completa cuando se trabaje esta etapa)*
+### Qué se hizo
+1. Se retomaron las 4 clases de la I Etapa (`Estudiante`, `Curso`, `Nota`, `Profesor`) **sin
+   modificarlas** — la Etapa 2 no pide cambiar clases, pide manejar muchas a la vez con
+   bucles, arreglos y matrices.
+2. Se siguió al pie de la letra el formato que exige la "Observación" del documento: cada uno
+   de los 5 puntos trae su **ejemplo descriptivo** (en palabras), su **ejemplo de código**, y
+   su **ejemplo de explicación** (qué hace el código línea por línea), igual que el modelo del
+   punto 1 del PDF original.
+3. Se armó el punto 4 (integración con POO) conectando explícitamente los arreglos con las
+   relaciones que ya estaban dibujadas en el diagrama de clases de la Etapa 1 (por ejemplo,
+   la relación "Curso matricula 0..\* Estudiante" se explica como un posible atributo
+   `Estudiante[] matriculados` dentro de `Curso`).
+4. El punto 5 (código completo) usa un arreglo de `Estudiante` y una matriz `double[][]`
+   *alineados por índice* (misma posición = mismo estudiante en ambos), con bucles anidados
+   que calculan el promedio y lo guardan usando `setPromedio()` — el mismo método get/set
+   definido en la Etapa 1, para que quede claro que el encapsulamiento se sigue respetando.
+5. Se exportó a PDF y se revisó página por página como imagen, igual que en la Etapa 1, para
+   confirmar que ningún bloque de código quedara cortado.
+
+### Indicadores de la rúbrica cubiertos (15 pts)
+
+| # | Indicador | Dónde está en el documento | Cómo explicarlo si preguntan |
+|---|---|---|---|
+| 1 | Relaciona el uso de bucles con el sistema | Sección 1 | Un `for` recorre un arreglo de `Estudiante` usando `.length` como límite; cada vuelta del contador `i` apunta a un estudiante distinto del arreglo. |
+| 2 | Aplica arreglos en el sistema | Sección 2 | Un arreglo `Nota[]` guarda varias notas de un mismo estudiante bajo un solo nombre, en vez de usar una variable suelta por cada nota. |
+| 3 | Representa la información mediante matrices | Sección 3 | La matriz `double[][]` tiene una fila por estudiante y una columna por curso; se recorre con dos bucles `for` anidados: el de afuera mueve la fila, el de adentro mueve la columna. |
+| 4 | Integra estructuras de datos con la POO | Sección 4 | Los arreglos no reemplazan las clases, las agrupan: un `Estudiante[]` sigue guardando objetos completos con sus atributos privados intactos; esto es literalmente cómo se implementaría la relación "Curso-Estudiante" del diagrama de la Etapa 1. |
+| 5 | Presenta ejemplos descriptivos, de código y explicación | Todas las secciones | Cada uno de los 5 puntos sigue la misma estructura de 3 partes que pide la "Observación" del documento. |
+
+### Dónde está todo
+- `etapa-2-estructuras-datos/etapa-2-estructuras-datos.pdf` → el entregable.
+- `etapa-2-estructuras-datos/etapa-2-estructuras-datos.html` → fuente editable.
+
+### Decisiones que quedaron registradas
+- La matriz de notas se hizo con `double[][]` (solo números) y no con `Nota[][]` (objetos
+  completos) porque el punto 5 pide *calcular* el promedio, y trabajar con números directos
+  es más simple para esa cuenta. En la sección 4 se explica que también se podría hacer con
+  una matriz de objetos `Nota`, para dejar claro que se entiende la alternativa, sin
+  complicar el código del ejemplo final.
+- El arreglo `estudiantes` y la matriz `notas` se armaron con los mismos 3 estudiantes en el
+  mismo orden (Damian, Ana, Luis) a propósito, para que la fila `i` de la matriz siempre
+  corresponda al estudiante `i` del arreglo — eso es lo que hace posible recorrer ambos con
+  el mismo índice en el punto 5.
 
 ## Etapa 3 — Integración final · ⏳ Pendiente
 

@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sistema de Notas Estudiantiles - Etapa 2</title>
+<style>
+  @page { size: A4; margin: 20mm 16mm 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    color: #1f2430;
+    font-size: 13.2px;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .page-break { page-break-before: always; }
+
+  /* ---------- PORTADA ---------- */
+  .portada {
+    height: 253mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .portada .top-bar {
+    background: #1c2b4a;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .portada .escudo {
+    margin-top: 40px;
+    font-size: 15px;
+    color: #4a5470;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .portada .escudo strong { color: #1c2b4a; font-size: 20px; letter-spacing: 1px; display:block; margin-bottom:4px;}
+  .portada .titulo-central { margin-top: 60px; }
+  .portada .titulo-central h1 {
+    font-size: 34px;
+    color: #1c2b4a;
+    margin: 0 0 10px 0;
+  }
+  .portada .titulo-central .subt {
+    font-size: 17px;
+    color: #2f5aa8;
+    font-weight: 600;
+  }
+  .portada .linea-oro {
+    width: 120px;
+    height: 4px;
+    background: #c9a227;
+    margin: 22px auto;
+  }
+  .portada .ficha {
+    text-align: left;
+    max-width: 380px;
+    margin: 0 auto;
+    font-size: 13.5px;
+    border-top: 2px solid #1c2b4a;
+    padding-top: 14px;
+  }
+  .portada .ficha div { margin: 5px 0; }
+  .portada .ficha b { color: #1c2b4a; display:inline-block; width: 150px; }
+  .portada .footer-portada { font-size: 11.5px; color: #4a5470; padding-bottom: 6px; }
+
+  /* ---------- ENCABEZADO DE PAGINA ---------- */
+  .doc-header {
+    display:flex; justify-content: space-between; align-items:center;
+    font-size: 10px; color:#5a6280; border-bottom:1px solid #d7dbea; padding-bottom:4px; margin-bottom:14px;
+  }
+
+  /* ---------- INDICE ---------- */
+  .indice h2 { color:#1c2b4a; }
+  .indice ol { font-size: 14px; line-height: 2; }
+  .indice ol li b { color:#1c2b4a; }
+
+  /* ---------- SECCIONES ---------- */
+  .section-title {
+    background: #1c2b4a;
+    color: #fff;
+    padding: 8px 14px;
+    font-size: 15.5px;
+    border-radius: 3px;
+    margin-top: 26px;
+    margin-bottom: 12px;
+  }
+  .section-title .tag {
+    float:right; font-size: 10.5px; background:#c9a227; color:#1c2b4a; padding:2px 8px; border-radius:10px; font-weight:600;
+  }
+  h3.sub {
+    color: #2f5aa8;
+    font-size: 13.8px;
+    margin: 16px 0 6px 0;
+    border-left: 4px solid #2f5aa8;
+    padding-left: 8px;
+  }
+  p { text-align: justify; margin: 8px 0; }
+
+  .callout {
+    background: #f4f6fb;
+    border-left: 4px solid #c9a227;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 12.5px;
+  }
+  .callout b.lbl { color:#8a6d00; }
+
+  .triada { border: 1px solid #d7dbea; border-radius: 6px; padding: 4px 14px 14px 14px; margin: 10px 0 18px 0; background:#fbfcfe;}
+  .triada .etq { display:inline-block; background:#2f5aa8; color:#fff; font-size:10.5px; font-weight:700; padding:3px 10px; border-radius:10px; margin-top:12px; margin-bottom:6px;}
+
+  pre {
+    background: #f4f6fb;
+    border-left: 4px solid #1c2b4a;
+    padding: 10px 12px;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 11.6px;
+    line-height: 1.45;
+    overflow-x: auto;
+    white-space: pre;
+    border-radius: 2px;
+    margin: 8px 0 14px 0;
+  }
+  code { font-family: Consolas, 'Courier New', monospace; background:#eef1f8; padding: 1px 4px; border-radius:2px; font-size: 11.8px;}
+  .kw { color:#0b5fa5; } .ty { color:#7a3e9d; } .str{ color:#0a7a4a;} .cm{ color:#6b7280; font-style:italic;}
+
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px 0; font-size: 12px; }
+  th, td { border: 1px solid #cfd6e8; padding: 6px 8px; text-align: left; vertical-align: top;}
+  th { background: #1c2b4a; color: #fff; font-weight:600; }
+  tr:nth-child(even) td { background: #f4f6fb; }
+  td.centro, th.centro { text-align:center; }
+
+  .conclusion-box { background:#f4f6fb; border:1px solid #d7dbea; border-radius:6px; padding:14px 16px; margin-top:14px;}
+  .footer-page { text-align:center; color:#8a92ab; font-size:10px; margin-top:30px; }
+</style>
+</head>
+<body>
+
+<!-- ======================= PORTADA ======================= -->
+<div class="portada">
+  <div class="top-bar">Departamento de Informática &middot; Programación Web &middot; II Semestre 2026</div>
+
+  <div class="escudo">
+    <strong>COTEPECOS</strong>
+    Colegio Técnico Profesional
+  </div>
+
+  <div class="titulo-central">
+    <h1>Sistema de Notas Estudiantiles</h1>
+    <div class="subt">II Etapa &mdash; Lógica y estructuras de datos (Bucles, Arreglos y Matrices)</div>
+    <div class="linea-oro"></div>
+    <div style="color:#4a5470; font-size:13px;">Proyecto de Programación &middot; Continuación del Sistema de Notas diseñado en la I Etapa</div>
+  </div>
+
+  <div class="ficha">
+    <div><b>Estudiante:</b> Damian Quirós Jiménez</div>
+    <div><b>Sección:</b> 11-5</div>
+    <div><b>Subárea:</b> Programación Web</div>
+    <div><b>Nivel:</b> 11°</div>
+    <div><b>Profesor(a):</b> ____________________________</div>
+    <div><b>Fecha de entrega:</b> 13 y 14 de octubre, 2026</div>
+  </div>
+
+  <div class="footer-portada">II Etapa Proyecto de Programación &mdash; Departamento de Informática</div>
+</div>
+
+<!-- ======================= INDICE ======================= -->
+<div class="page-break indice">
+  <h2>Índice</h2>
+  <ol>
+    <li><b>Introducción</b></li>
+    <li><b>Bucles recorriendo el sistema</b></li>
+    <li><b>Arreglos en el sistema</b></li>
+    <li><b>Matriz de notas (estudiantes &times; cursos)</b></li>
+    <li><b>Integración de las estructuras con la POO</b></li>
+    <li><b>Código completo: cálculo del promedio general</b></li>
+    <li><b>Conclusión</b></li>
+  </ol>
+</div>
+
+<!-- ======================= INTRODUCCION ======================= -->
+<div class="page-break">
+<div class="doc-header"><span>Sistema de Notas Estudiantiles &middot; II Etapa</span><span>Damian Quirós Jiménez &middot; 11-5</span></div>
+
+<div class="section-title">Introducción</div>
+<p>
+En la I Etapa se diseñaron cuatro clases (<code>Estudiante</code>, <code>Curso</code>, <code>Nota</code> y
+<code>Profesor</code>) explicando qué guarda cada una y cómo se relacionan. El problema es que, en un
+colegio real, no hay un solo estudiante: hay treinta, cuarenta, o los que tenga la sección. Crear una
+variable distinta para cada uno (<code>Estudiante e1</code>, <code>Estudiante e2</code>, <code>Estudiante
+e3</code>...) no es manejable.
+</p>
+<p>
+Para eso sirven los <b>bucles</b> y los <b>arreglos</b>: un arreglo guarda muchos objetos del mismo tipo bajo
+un solo nombre, y un bucle permite recorrerlos a todos sin repetir código. Cuando la información tiene dos
+dimensiones &mdash;por ejemplo, varios estudiantes con varias notas cada uno, una por curso&mdash; se usa una
+<b>matriz</b>, que es un arreglo de arreglos.
+</p>
+<p>
+Este documento retoma exactamente las clases de la I Etapa y muestra cómo esas estructuras de datos se
+apoyan en ellas para procesar información real del sistema.
+</p>
+</div>
+
+<!-- ======================= 1. BUCLES ======================= -->
+<div class="doc-header"><span>Sistema de Notas Estudiantiles &middot; II Etapa</span><span>Damian Quirós Jiménez &middot; 11-5</span></div>
+<div class="section-title">1. Bucles recorriendo el sistema <span class="tag">Indicador 1</span></div>
+<p>
+Un bucle sirve para repetir una acción sobre cada elemento de una colección sin escribir esa acción una y
+otra vez a mano. En Java se puede usar <code>for</code> (cuando se sabe cuántas veces hay que repetir, por
+ejemplo "una vez por cada estudiante del arreglo") o <code>while</code> (cuando se repite mientras se cumpla
+una condición). Para recorrer un arreglo completo, lo normal es usar <code>for</code>, porque el propio
+arreglo ya sabe su tamaño (<code>.length</code>).
+</p>
+
+<div class="triada">
+<div class="etq">Ejemplo descriptivo</div>
+<p>El sistema puede tener un arreglo con los estudiantes matriculados en un curso. Un bucle <code>for</code>
+recorre ese arreglo desde el primero hasta el último estudiante, y en cada vuelta le pide que muestre sus
+datos. En palabras simples, el bucle "pasa revista" a todos los estudiantes uno por uno, sin que haya que
+escribir una línea distinta por cada uno.</p>
+
+<div class="etq">Ejemplo de código</div>
+<pre><span class="ty">Estudiante</span>[] listaEstudiantes = <span class="kw">new</span> Estudiante[<span class="str">3</span>];
+listaEstudiantes[<span class="str">0</span>] = <span class="kw">new</span> Estudiante(<span class="str">"118760123"</span>, <span class="str">"Damian Quirós"</span>, <span class="str">"damian@correo.com"</span>);
+listaEstudiantes[<span class="str">1</span>] = <span class="kw">new</span> Estudiante(<span class="str">"205430987"</span>, <span class="str">"Ana Rojas"</span>, <span class="str">"ana@correo.com"</span>);
+listaEstudiantes[<span class="str">2</span>] = <span class="kw">new</span> Estudiante(<span class="str">"109980456"</span>, <span class="str">"Luis Mora"</span>, <span class="str">"luis@correo.com"</span>);
+
+<span class="kw">for</span> (<span class="ty">int</span> i = <span class="str">0</span>; i &lt; listaEstudiantes.length; i++) {
+    listaEstudiantes[i].mostrarDatos();
+}</pre>
+
+<div class="etq">Ejemplo de explicación</div>
+<p>Se declara un arreglo de objetos <code>Estudiante</code> llamado <code>listaEstudiantes</code>, con espacio
+para 3 posiciones. Cada posición se llena con un objeto distinto usando <code>new</code>. El bucle
+<code>for</code> usa un contador <code>i</code> que arranca en 0 y sube de uno en uno mientras sea menor que
+<code>listaEstudiantes.length</code> (en este caso, 3). En cada vuelta, <code>i</code> apunta a un
+estudiante distinto del arreglo, y se llama a su método <code>mostrarDatos()</code>. Así se procesan los
+tres estudiantes con las mismas 3 líneas de código, sin importar si el arreglo tuviera 3 o 300 estudiantes.</p>
+</div>
+
+<p>La misma idea se puede escribir con <code>while</code>, controlando el contador a mano:</p>
+<pre><span class="ty">int</span> i = <span class="str">0</span>;
+<span class="kw">while</span> (i &lt; listaEstudiantes.length) {
+    listaEstudiantes[i].mostrarDatos();
+    i++;
+}</pre>
+<div class="callout"><b class="lbl">Diferencia clave:</b> con <code>for</code> el contador nace, se compara y
+se incrementa en una sola línea, así que es más difícil olvidar el <code>i++</code>. Con <code>while</code>
+hay que acordarse de subir <code>i</code> manualmente adentro del bucle, o el programa nunca termina (bucle
+infinito).</div>
+
+<!-- ======================= 2. ARREGLOS ======================= -->
+<div class="section-title">2. Arreglos en el sistema <span class="tag">Indicador 2</span></div>
+<p>
+Un arreglo (<i>array</i>) es un bloque de casillas numeradas, todas del mismo tipo, guardadas bajo un solo
+nombre de variable. En este sistema, en vez de guardar cada <code>Estudiante</code> o cada
+<code>Nota</code> en una variable suelta, se guardan varios dentro de un arreglo de ese tipo.
+</p>
+
+<div class="triada">
+<div class="etq">Ejemplo descriptivo</div>
+<p>Un mismo estudiante saca varias notas a lo largo del curso: un examen, un proyecto, un quiz, una tarea.
+En vez de tener cuatro variables sueltas (<code>nota1</code>, <code>nota2</code>...), esas cuatro notas se
+guardan en un arreglo de objetos <code>Nota</code>, todas agrupadas bajo un solo nombre.</p>
+
+<div class="etq">Ejemplo de código</div>
+<pre><span class="ty">Nota</span>[] notasDeUnEstudiante = <span class="kw">new</span> Nota[<span class="str">4</span>];
+notasDeUnEstudiante[<span class="str">0</span>] = <span class="kw">new</span> Nota(<span class="str">88.5</span>, <span class="str">"Examen"</span>, <span class="str">"14/10/2026"</span>);
+notasDeUnEstudiante[<span class="str">1</span>] = <span class="kw">new</span> Nota(<span class="str">92.0</span>, <span class="str">"Proyecto"</span>, <span class="str">"20/10/2026"</span>);
+notasDeUnEstudiante[<span class="str">2</span>] = <span class="kw">new</span> Nota(<span class="str">75.0</span>, <span class="str">"Quiz"</span>, <span class="str">"28/10/2026"</span>);
+notasDeUnEstudiante[<span class="str">3</span>] = <span class="kw">new</span> Nota(<span class="str">80.0</span>, <span class="str">"Tarea"</span>, <span class="str">"02/11/2026"</span>);
+
+<span class="kw">for</span> (<span class="ty">int</span> i = <span class="str">0</span>; i &lt; notasDeUnEstudiante.length; i++) {
+    notasDeUnEstudiante[i].mostrarNota();
+}</pre>
+
+<div class="etq">Ejemplo de explicación</div>
+<p><code>notasDeUnEstudiante</code> es un arreglo de tamaño fijo (4 posiciones, definidas al crearlo con
+<code>new Nota[4]</code>). A diferencia de guardar solo números sueltos, cada posición guarda un objeto
+<code>Nota</code> completo, con su valor, su tipo de evaluación y su fecha &mdash;porque esos tres datos son
+justamente los atributos privados que se definieron para la clase <code>Nota</code> en la I Etapa. El bucle
+<code>for</code> recorre el arreglo igual que en el punto anterior, y por cada posición pide el detalle con
+<code>mostrarNota()</code>.</p>
+</div>
+
+<!-- ======================= 3. MATRIZ ======================= -->
+<div class="page-break"></div>
+<div class="doc-header"><span>Sistema de Notas Estudiantiles &middot; II Etapa</span><span>Damian Quirós Jiménez &middot; 11-5</span></div>
+<div class="section-title">3. Matriz de notas (estudiantes &times; cursos) <span class="tag">Indicador 3</span></div>
+<p>
+Una matriz es, en el fondo, un arreglo de arreglos: una tabla con filas y columnas. Para este sistema tiene
+sentido una matriz donde <b>cada fila es un estudiante</b> y <b>cada columna es un curso</b>, de modo que la
+posición <code>[fila][columna]</code> guarda la nota final de ese estudiante en ese curso.
+</p>
+<table>
+  <tr><th></th><th class="centro">Programación (col. 0)</th><th class="centro">Matemática (col. 1)</th><th class="centro">Español (col. 2)</th></tr>
+  <tr><td><b>Damian (fila 0)</b></td><td class="centro">88.5</td><td class="centro">92.0</td><td class="centro">79.0</td></tr>
+  <tr><td><b>Ana (fila 1)</b></td><td class="centro">95.0</td><td class="centro">68.0</td><td class="centro">84.0</td></tr>
+  <tr><td><b>Luis (fila 2)</b></td><td class="centro">70.0</td><td class="centro">73.5</td><td class="centro">90.0</td></tr>
+</table>
+
+<div class="triada">
+<div class="etq">Ejemplo descriptivo</div>
+<p>Para leer una matriz completa hace falta un bucle dentro de otro bucle (bucles anidados): el bucle de
+afuera se mueve fila por fila (estudiante por estudiante), y por cada fila, el bucle de adentro recorre
+columna por columna (curso por curso) antes de pasar a la siguiente fila.</p>
+
+<div class="etq">Ejemplo de código</div>
+<pre><span class="ty">double</span>[][] matrizNotas = {
+    { <span class="str">88.5</span>, <span class="str">92.0</span>, <span class="str">79.0</span> },  <span class="cm">// fila 0: notas de Damian</span>
+    { <span class="str">95.0</span>, <span class="str">68.0</span>, <span class="str">84.0</span> },  <span class="cm">// fila 1: notas de Ana</span>
+    { <span class="str">70.0</span>, <span class="str">73.5</span>, <span class="str">90.0</span> }   <span class="cm">// fila 2: notas de Luis</span>
+};
+
+<span class="kw">for</span> (<span class="ty">int</span> fila = <span class="str">0</span>; fila &lt; matrizNotas.length; fila++) {
+    <span class="kw">for</span> (<span class="ty">int</span> columna = <span class="str">0</span>; columna &lt; matrizNotas[fila].length; columna++) {
+        System.out.println(<span class="str">"Estudiante "</span> + fila + <span class="str">" - Curso "</span> + columna
+            + <span class="str">": "</span> + matrizNotas[fila][columna]);
+    }
+}</pre>
+
+<div class="etq">Ejemplo de explicación</div>
+<p><code>matrizNotas</code> es un arreglo de arreglos <code>double</code>: cada elemento de
+<code>matrizNotas</code> no es un número, sino otro arreglo (una fila completa). <code>matrizNotas.length</code>
+da la cantidad de filas (3 estudiantes). Adentro del bucle externo, <code>matrizNotas[fila].length</code> da
+la cantidad de columnas de esa fila específica (3 cursos). El bucle externo (<code>fila</code>) avanza
+estudiante por estudiante; por cada estudiante, el bucle interno (<code>columna</code>) recorre sus notas de
+cada curso, una por una, antes de que el bucle externo pase al siguiente estudiante.</p>
+</div>
+
+<!-- ======================= 4. INTEGRACION CON POO ======================= -->
+<div class="section-title">4. Integración de las estructuras con la POO <span class="tag">Indicador 4</span></div>
+<p>
+Los arreglos y las matrices no reemplazan a las clases de la I Etapa: las <b>organizan en grupo</b>. Un
+arreglo <code>Estudiante[]</code> sigue guardando objetos <code>Estudiante</code> completos, con todos sus
+atributos privados y su encapsulamiento intactos; el arreglo solo agrega la capacidad de tener muchos a la
+vez y recorrerlos con un bucle.
+</p>
+<p>
+Esto conecta directamente con el diagrama de clases de la I Etapa: la relación <i>"Curso matricula
+0..* Estudiante"</i> que se dibujó ahí, en código, se puede representar exactamente con un arreglo. La clase
+<code>Curso</code> podría tener un atributo <code>private Estudiante[] matriculados;</code> para guardar a
+todos sus estudiantes, y un método que los recorra con un <code>for</code> para, por ejemplo, calcular
+cuántos aprobaron. De la misma forma, la relación <i>"Estudiante posee 0..* Nota"</i> se puede representar
+con un arreglo <code>Nota[]</code> dentro de <code>Estudiante</code>.
+</p>
+<p>
+La matriz del punto 3 funciona igual, pero en vez de guardar solo el número de la nota (<code>double</code>),
+también podría ser una matriz de objetos completos (<code>Nota[][] matrizNotas</code>), donde cada casilla
+guarda un objeto <code>Nota</code> con su valor, tipo de evaluación y fecha, en vez de un simple decimal. La
+versión con <code>double[][]</code> que se usó arriba es más simple y suficiente para calcular promedios,
+que es justamente lo que se necesita en el siguiente punto.
+</p>
+<div class="callout"><b class="lbl">En resumen:</b> las estructuras de datos (arreglos, matrices) son el
+"contenedor" que agrupa muchos objetos de las clases diseñadas en la I Etapa; los bucles son la herramienta
+para recorrer ese contenedor y hacer algo con cada objeto que hay adentro.</div>
+
+<!-- ======================= 5. CODIGO COMPLETO ======================= -->
+<div class="page-break"></div>
+<div class="doc-header"><span>Sistema de Notas Estudiantiles &middot; II Etapa</span><span>Damian Quirós Jiménez &middot; 11-5</span></div>
+<div class="section-title">5. Código completo: cálculo del promedio general <span class="tag">Indicador 5</span></div>
+<p>
+Este último punto junta todo lo anterior: un arreglo de <code>Estudiante</code>, una matriz de notas, y
+bucles anidados para calcular el promedio general de cada estudiante y guardarlo de vuelta en su objeto,
+usando el <code>setPromedio()</code> definido en la I Etapa.
+</p>
+
+<div class="triada">
+<div class="etq">Ejemplo descriptivo</div>
+<p>Por cada estudiante (fila de la matriz) se necesita sumar todas sus notas (columnas de esa fila) y
+dividir esa suma entre la cantidad de cursos, para obtener el promedio general. Eso es exactamente un bucle
+externo (por estudiante) con un bucle interno (por curso) que va acumulando una suma.</p>
+
+<div class="etq">Ejemplo de código</div>
+<pre><span class="kw">public class</span> Main {
+    <span class="kw">public static void</span> main(<span class="ty">String</span>[] args) {
+
+        <span class="ty">Estudiante</span>[] estudiantes = {
+            <span class="kw">new</span> Estudiante(<span class="str">"118760123"</span>, <span class="str">"Damian Quirós"</span>, <span class="str">"damian@correo.com"</span>),
+            <span class="kw">new</span> Estudiante(<span class="str">"205430987"</span>, <span class="str">"Ana Rojas"</span>, <span class="str">"ana@correo.com"</span>),
+            <span class="kw">new</span> Estudiante(<span class="str">"109980456"</span>, <span class="str">"Luis Mora"</span>, <span class="str">"luis@correo.com"</span>)
+        };
+
+        <span class="ty">double</span>[][] notas = {
+            { <span class="str">88.5</span>, <span class="str">92.0</span>, <span class="str">79.0</span> },
+            { <span class="str">95.0</span>, <span class="str">68.0</span>, <span class="str">84.0</span> },
+            { <span class="str">70.0</span>, <span class="str">73.5</span>, <span class="str">90.0</span> }
+        };
+
+        <span class="kw">for</span> (<span class="ty">int</span> i = <span class="str">0</span>; i &lt; estudiantes.length; i++) {
+
+            <span class="ty">double</span> suma = <span class="str">0</span>;
+            <span class="kw">for</span> (<span class="ty">int</span> j = <span class="str">0</span>; j &lt; notas[i].length; j++) {
+                suma = suma + notas[i][j];
+            }
+
+            <span class="ty">double</span> promedioGeneral = suma / notas[i].length;
+            estudiantes[i].setPromedio(promedioGeneral);
+            estudiantes[i].mostrarDatos();
+        }
+    }
+}</pre>
+
+<div class="etq">Ejemplo de explicación</div>
+<p>El arreglo <code>estudiantes</code> y la matriz <code>notas</code> están alineados a propósito: la fila
+<code>i</code> de <code>notas</code> corresponde siempre al estudiante en la posición <code>i</code> de
+<code>estudiantes</code> (por eso Damian está en la posición 0 de ambos, Ana en la 1, Luis en la 2). El
+bucle externo (<code>i</code>) avanza estudiante por estudiante. Por cada estudiante, la variable
+<code>suma</code> se reinicia en 0, y el bucle interno (<code>j</code>) recorre todas las notas de esa fila,
+acumulándolas en <code>suma</code>. Cuando el bucle interno termina, <code>suma</code> tiene el total de las
+notas de ese estudiante; dividiéndolo entre <code>notas[i].length</code> (la cantidad de cursos) se obtiene
+el promedio general. Ese promedio no se queda suelto: se guarda dentro del objeto con
+<code>estudiantes[i].setPromedio(promedioGeneral)</code>, respetando el encapsulamiento definido en la I
+Etapa &mdash;nada fuera de la clase toca el atributo <code>promedio</code> directamente. Por último,
+<code>mostrarDatos()</code> imprime el resultado ya guardado.</p>
+</div>
+
+<!-- ======================= CONCLUSION ======================= -->
+<div class="page-break"></div>
+<div class="doc-header"><span>Sistema de Notas Estudiantiles &middot; II Etapa</span><span>Damian Quirós Jiménez &middot; 11-5</span></div>
+<div class="section-title">Conclusión</div>
+<div class="conclusion-box">
+<p>
+Esta etapa no cambió ni una clase de las que se diseñaron en la I Etapa: <code>Estudiante</code>,
+<code>Curso</code>, <code>Nota</code> y <code>Profesor</code> siguen siendo exactamente las mismas, con sus
+atributos privados y sus métodos <code>get</code>/<code>set</code> intactos. Lo que se agregó fue la forma
+de <b>manejar muchos objetos de esas clases a la vez</b>: arreglos para guardarlos en grupo, matrices para
+organizar información en dos dimensiones (estudiantes &times; cursos), y bucles &mdash;simples y
+anidados&mdash; para recorrer todo eso sin repetir código.
+</p>
+<p>
+El código del punto 5 es, en la práctica, el motor que le falta al sistema para que sea útil de verdad: a
+partir de una lista de estudiantes y una matriz de notas, calcula y guarda el promedio general de cada uno
+usando exactamente los métodos que ya existían. Esa misma base de arreglos y bucles es la que se va a usar
+en la III Etapa para poblar la interfaz gráfica con los datos del sistema.
+</p>
+</div>
+
+<div class="footer-page">II Etapa Proyecto de Programación &middot; Departamento de Informática &middot; COTEPECOS</div>
+
+</body>
+</html>

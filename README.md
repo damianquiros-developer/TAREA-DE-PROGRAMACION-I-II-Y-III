@@ -15,7 +15,7 @@ documento explícitamente para la Etapa 2: "Mantener coherencia con la primera e
 | Etapa | Nombre | Entregable | Puntos | Fecha límite (según doc) | Estado |
 |---|---|---|---|---|---|
 | 1 | Diseño de un Sistema de Notas (POO básica) | PDF teórico-explicativo | 24 pts | 14-15 octubre | ✅ Hecho |
-| 2 | Lógica y estructuras de datos (Bucles, Arreglos y Matrices) | PDF teórico-explicativo | 15 pts | 13-14 octubre | ⏳ Pendiente |
+| 2 | Lógica y estructuras de datos (Bucles, Arreglos y Matrices) | PDF teórico-explicativo | 15 pts | 13-14 octubre | ✅ Hecho |
 | 3 | Integración final: Herencia, Polimorfismo e Interfaz Gráfica | PDF + proyecto NetBeans ejecutable (.zip) | 15 pts | 13-14 octubre | ⏳ Pendiente |
 
 **Total del proyecto: 54 puntos.**
@@ -53,7 +53,7 @@ documento explícitamente para la Etapa 2: "Mantener coherencia con la primera e
 8. Diagrama de Secuencia UML (objetos, líneas de vida, mensajes). *(Indicador 8)*
 9. Armar portada + orden + exportar a PDF.
 
-### Etapa 2 — Lógica y estructuras de datos — 15 pts (próximo paso)
+### Etapa 2 — Lógica y estructuras de datos — 15 pts ✅
 1. Explicar bucle `for`/`while` recorriendo una lista de `Estudiante`, con ejemplo de código.
 2. Explicar cómo se guardan varios `Estudiante` o `Nota` en un arreglo.
 3. Proponer una matriz de notas (filas = estudiantes, columnas = cursos) y explicar el
@@ -85,6 +85,8 @@ tarea-de-programacion-i-ii-y-iii/
 ├── etapa-1-diseno-poo/
 │   ├── etapa-1-sistema-notas.html    <- fuente del documento
 │   └── etapa-1-sistema-notas.pdf     <- entregable en PDF ✅
-├── etapa-2-estructuras-datos/        <- pendiente
+├── etapa-2-estructuras-datos/
+│   ├── etapa-2-estructuras-datos.html <- fuente del documento
+│   └── etapa-2-estructuras-datos.pdf  <- entregable en PDF ✅
 └── etapa-3-integracion-final/        <- pendiente (incluirá el proyecto NetBeans)
 ```
